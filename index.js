@@ -28,30 +28,58 @@ const posts = [
     }
 ]
 
-const nameEl = document.getElementById("name")
-const locationEl = document.getElementById("location")
-const avatarEl = document.getElementById("avatar")
-const postEl = document.getElementById("post")
-const commentEl = document.getElementById("comment")
-const likesEl = document.getElementById("likes")
-const usernameEl = document.getElementById("username")
-const likeBtnEl = document.getElementById("like-btn")
 
+function renderPost() {
+    for(let i = 0; i < posts.length; i++) {
 
-function renderPost(item) {
-    locationEl.textContent = posts[item].location
-    nameEl.textContent = posts[item].name
-    avatarEl.src = posts[item].avatar
-    postEl.src = posts[item].post
-    commentEl.textContent = posts[item].comment
-    likesEl.textContent = posts[item].likes + " likes"
-    usernameEl.textContent = posts[item].username
+        const mainEl = document.createElement("section")
+
+        mainEl.innerHTML =
+             `
+             <div class="main-container">
+                <header>
+                    <img src="images/logo.png" alt="logo" class="logo">
+                    <img src="images/user-avatar.png" alt="user-avatar" class="avatar">
+                </header>
+
+                <section>
+                    <div class="user-info">
+                        <img src="${posts[i].avatar}" class="avatar" id="avatar">
+                        <div>
+                            <p class="bold-text" id="name">${posts[i].name}</p>
+                            <p id="location">${posts[i].location}</p>
+                        </div>
+                    </div>
+                    <img src="${posts[i].post}" class="main-image" id="post">
+                </section>
+
+                <section class="bottom-section">
+                    <div class="icons">
+                        <img src="images/icon-heart.png" id="like-btn">
+                        <img src="images/icon-comment.png">
+                        <img src="images/icon-dm.png">
+                    </div>
+                    <p class="likes bold-text" id="likes">${posts[i].likes} likes</p>
+                    <div class="user-comment">
+                        <p class="bold-text" id="username">${posts[i].username}</p>
+                        <p id="comment">${posts[i].comment}</p>
+                    </div>
+                </section>
+            </div>
+            `
+            container.appendChild(mainEl)
+
+            const likeBtnEl = mainEl.querySelector("#like-btn")
+            likeBtnEl.addEventListener("click", function() {
+
+            const likesEl = mainEl.querySelector("#likes")
+            
+            let likesNumber = 0
+            likesNumber =+ 1
+            likesEl.textContent = parseInt(likesEl.textContent) + likesNumber + " likes"        
+    })
+    }
 }
 
 
-likeBtnEl.addEventListener("click", function() {
-    let likesNumber = 0
-    likesNumber =+ 1
-    likesEl.textContent = parseInt(likesEl.textContent) + likesNumber + " likes"    
-})
-
+renderPost()

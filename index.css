@@ -8,8 +8,6 @@ html, body {
 .container {
     width: 375px;
     margin: 0 auto;
-    border: 1px solid grey;
-
 }
 
 header {
@@ -18,6 +16,11 @@ header {
     align-items: center;
     padding: 0 10px 8px;
     border-bottom: 1px solid #C6C6C6;
+}
+
+.main-container {
+    border: 1px solid grey;
+    margin-bottom: 30px;
 }
 
 p {
@@ -34,7 +37,7 @@ p {
     border-radius: 100%;
 }
 
-/* main section */
+/* top section */
 
 .user-info {
     display: flex;
@@ -67,6 +70,11 @@ p {
     opacity: 0.5;
 }
 
+.icons img:active {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
 .user-comment {
     display: flex;
 }
@@ -84,4 +92,3 @@ p {
 .bold-text {
     font-weight: 700;
 }
-
